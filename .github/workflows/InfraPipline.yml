@@ -9,13 +9,13 @@ on:
       RESOURCE_GROUP:
         description: 'Resource Group Name'
         required: true
-        default: 'Databricks-MyProject'
+        default: 'Databricks-MyProject-SK'
 
       # The Azure region to which to deploy your resources
       LOCATION:
         description: 'Azure Region'
         required: true
-        default: 'EastUS2'
+        default: 'centralindia'
 
       # This is the name of your Azure Databricks resource
       WORKSPACE_NAME:
@@ -33,7 +33,7 @@ on:
       SUBSCRIPTION_ID:
         description: 'Azure Subscription Id'
         required: true
-        default: '00000000-0000-0000-0000-000000000000'
+        default: '117f44d0-f739-4108-aad6-e0ca69049181'
 
       # Inialize the system
       # Note: We only want to run the KeyVault ARM template once.  If you keep re-running, then you will OVERWRITE your values
@@ -55,7 +55,7 @@ jobs:
     # Checkout code
     steps:
     - name: Checkout code
-      uses: actions/checkout@v2
+      uses: actions/checkout@v4
 
     # Show the environment variables for debugging
     - name: Display Environment Variable
@@ -67,7 +67,7 @@ jobs:
 
     # Publish Artifact: ARM-Templates
     - name: 'Publish Artifact: ARM-Templates' 
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v4
       with:
         name: 'ARM-Templates'
         path: '${{ github.workspace }}/ARM-Templates'
@@ -95,7 +95,7 @@ jobs:
 
     # Download Artifact: ARM-Templates
     - name: 'Download Artifact: ARM-Templates' 
-      uses: actions/download-artifact@v2
+      uses: actions/download-artifact@v4
       with:
         name: 'ARM-Templates'
         path: ${{ github.workspace }}/ARM-Templates
@@ -156,7 +156,7 @@ jobs:
 
     # Download Artifact: ARM-Templates
     - name: 'Download Artifact: ARM-Templates' 
-      uses: actions/download-artifact@v2
+      uses: actions/download-artifact@v4
       with:
         name: 'ARM-Templates'
         path: ${{ github.workspace }}/ARM-Templates
@@ -218,7 +218,7 @@ jobs:
 
     # Download Artifact: ARM-Templates
     - name: 'Download Artifact: ARM-Templates' 
-      uses: actions/download-artifact@v2
+      uses: actions/download-artifact@v4
       with:
         name: 'ARM-Templates'
         path: ${{ github.workspace }}/ARM-Templates
